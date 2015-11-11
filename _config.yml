@@ -1,0 +1,5 @@
+name: Collecting
+
+collections:
+  docs:
+    output: true

@@ -1,0 +1,19 @@
+---
+---
+
+<!-- assign collection to a variable so we can use the sort filter -->
+{% assign docs = site.docs | sort: 'category' %}
+{% for doc in docs %}
+
+	<!-- draw category title if it doesn't exist in "used" variable -->
+	{% if used contains doc.category %}
+	{% else %}
+		<h2>{{ doc.category }}</h2>
+	{% endif %}
+
+	<h3><a href="{{ doc.url }}">{{ doc.title }}</a></h3>
+	{{ doc.content }}
+
+	<!-- add the current category to "used" variable -->
+	{% capture used %}{{ used }}{{ doc.category }},{% endcapture %}
+{% endfor %}
